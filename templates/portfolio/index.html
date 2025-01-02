@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<ul id="results"></ul>
+
+<script>
+
+    let input = document.querySelector('input');
+    input.addEventListener('input', async function () {
+        let response = await fetch('/portfolio/search?q=' + input.value);
+        let project = await response.json();
+        let html = '';
+        for (let id in project) {
+            let actual_id = project[id].id;
+            let pType = project[id].p_type.replace('<', '&lt;').replace('&', '&amp;');
+            let poNum = project[id].po_number.replace('<', '&lt;').replace('&', '&amp;');
+            let address = project[id].address.replace('<', '&lt;').replace('&', '&amp;');
+            let numChargers = project[id].num_chargers; // This is a number
+            let permit = project[id].permit_num.replace('<', '&lt;').replace('&', '&amp;');
+            let currStat = project[id].project_status.replace('<', '&lt;').replace('&', '&amp;');
+            let invoice = project[id].invoice.replace('<', '&lt;').replace('&', '&amp;');
+            let datto = project[id].datto.replace('<', '&lt;').replace('&', '&amp;');
+            html += `<li><a class="text-decoration-none" href="/portfolio/project/${actual_id}">${pType} | ${poNum} | ${address} | ${numChargers} | ${permit} | ${currStat} | ${invoice} | ${datto}</a></li>`;
+        }
+        document.querySelector('#results').innerHTML = html;
+    });
+
+</script>
+{% endblock %}

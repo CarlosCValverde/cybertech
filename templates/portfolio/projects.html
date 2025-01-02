@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="dropdown" style="display: flex; justify-content: flex-end;">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Filter by Uploaded to Datto
+    </button>
+    <ul class="dropdown-menu">
+        <form action="/portfolio/datto" method="GET">
+            <li><button class="dropdown-item" type="submit" name="datto" value="completed">Completed</button>
+            </li>
+            <li><button class="dropdown-item" type="submit" name="datto" value="partial">Partial</button></li>
+            <li><button class="dropdown-item" type="submit" name="datto" value="empty">Empty</button></li>
+        </form>
+    </ul>
+</div>
+
+<div class="container-fluid">
+    <h1>Projects Portfolio</h1>
+</div>
+<div class="container-fluid">
+    <div class="mb-3">
+        <table class="table tablestriped table-hover">
+            <thead>
+                <tr>
+                    <th class="text-center">Project Type</th>
+                    <th class="text-center">PO Number</th>
+                    <th class="text-center">Address</th>
+                    <th class="text-center"># Chargers</th>
+                    <th class="text-center">Permit Number(s)</th>
+                    <th class="text-center">Project Status</th>
+                    <th class="text-center">Start Date</th>
+                    <th class="text-center">Invoice</th>
+                    <th class="text-center">Uploaded Datto</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in projects%}
+                <tr>
+                    <td class="text-start">{{ project.p_type }}</td>
+                    <td class="text-start">{{ project.po_number }}</td>
+                    <td class="text-start">{{ project.address }}</td>
+                    <td class="text-end">{{ project.num_chargers }}</td>
+                    <td class="text-end">{{ project.permit_num }}</td>
+                    <td class="text-center">{{ project.project_status }}</td>
+                    <td class="text-center">{{ project.start_date }}</td>
+                    <td class="text-center">{{ project.invoice }}</td>
+                    <td class="text-center">{{ project.datto }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="9" class="text-center">No data available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

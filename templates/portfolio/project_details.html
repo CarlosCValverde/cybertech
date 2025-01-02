@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>Project Details</h1>
+
+<div class="container mt-5">
+    <table class="table table-bordered border-primary table-hover">
+        <tbody>
+            {% for record in project %}
+            <tr class="fs-5">
+                <td class="text-start col-4">Project Type:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.p_type }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Address:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.address }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Number of Chargers:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.num_chargers }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Permit Number:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.permit_num }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Start Date:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.start_date }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Inspection Type:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.i_type }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Inspection Date:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.inspection_date }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Inspection Status:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.inspection_status }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Purchase Order:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.po_number }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Invoice Percentage:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.invoice }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Uploaded to Datto:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.datto }}</td>
+            </tr>
+            <tr class="fs-5">
+                <td class="text-start">Project Current Status:</td>
+                <td class="text-start fw-medium table-info col-6">{{ record.project_status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<h1>Project Details</h1>
+
+<div class="container mt-5">
+    <form action="/portfolio/update_view" method="post">
+        <input type="hidden" name="project_id" value="{{ project_id }}">
+        <div class="mb-3">
+            <table class="table table-bordered border-primary table-hover">
+                <tbody>
+                    {% for record in project %}
+                    <tr class="fs-5">
+                        <td class="text-start col-4">Utility Type:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <select name="p_type" style="width: 200px;">
+                                {% for util in utility %}
+                                <option value="{{ util }}">{{ util }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Address:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <input type="text" name="address" value="{{ record.address }}" style="width: 400px;">
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Number of Chargers:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <input type="number" min="1" name="number_chargers" value="{{ record.number_chargers }}"
+                                style="width: 400px;">
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Permit Number:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <input type="text" name="permit_number" value="{{ record.permit_number }}"
+                                style="width: 400px;">
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Start Date:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <input type="date" name="start_date" value="{{ record.start_date }}" style="width: 400px;">
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Inspection Type:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <select name="inspect_type" style="width: 200px;">
+                                {% for inspection in inspection_type %}
+                                <option value="{{ inspection }}">{{ inspection }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Inspection Date:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <input type="date" name="inspect_date" value="{{ record.inspect_date }}"
+                                style="width: 400px;">
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Inspection Status:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <select name="status" style="width: 200px;">
+                                {% for inspect in inspection_status %}
+                                <option value="{{ inspect }}">{{ inspect }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Purchase Order:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <input type="text" name="po_number" value="{{ record.po_number }}" style="width: 400px;">
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Invoice Percentage:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <select name="invoice_percentage" style="width: 200px;">
+                                {% for invo in invoice %}
+                                <option value="{{ invo }}">{{ invo }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Uploaded to Datto:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <select name="datto_platform" style="width: 200px;">
+                                {% for d in datto %}
+                                <option value="{{ d }}">{{ d }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="fs-5">
+                        <td class="text-start">Project Current Status:</td>
+                        <td class="text-start fw-medium table-info col-6">
+                            <select name="current_status" style="width: 200px;">
+                                {% for s in status %}
+                                <option value="{{ s }}">{{ s }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="mb-5">
+            <button class="bbtn btn-secondary btn-lg" type="submit">Save Changes</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
