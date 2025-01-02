@@ -31,7 +31,7 @@ if __name__ == "__main__":
             print("Tables created successfully")
         except Exception as e:
             print(f"Error creating tables: {e}")"""
-    app.run()
+    app.run(debug=True)
 
 """
 app.register_blueprint(auth.bp)
