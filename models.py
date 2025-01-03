@@ -3,7 +3,6 @@ from sqlalchemy import Column, Integer, String, Enum, Date, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
-#from database import Base
 
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -26,9 +25,7 @@ DATABASE_URL = f"mysql+pymysql://{DATABASE_USERNAME}:{DATABASE_PASSWORD}@{DATABA
 
 # Create the database engine
 engine = create_engine(DATABASE_URL)
-#SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://appuser:Reypoeta369@localhost:3306/cybertech'
-#engine = create_engine(SQLALCHEMY_DATABASE_URI)
-#Base = declarative_base()
+
 SessionLocal = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))

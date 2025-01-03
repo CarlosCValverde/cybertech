@@ -1,16 +1,14 @@
 from flask import Blueprint
 from flask import flash
-from flask import g
 from flask import redirect
 from flask import render_template
 from flask import request
 from flask import session
 from flask import url_for
 from flask import jsonify
-from werkzeug.exceptions import abort
 
 from auth import login_required
-from database import get_db
+from models import get_db
 import models
 from utils import objects_to_dict
 
